@@ -15,13 +15,20 @@ function addBookToLibrary(title, author, pages) {
 }
 
 function displayLibrary(library) {
+    libraryStand.innerHTML = '';
+
     library.forEach(book => {
         const bookContainer = document.createElement("div");
         bookContainer.classList.add("book");
+        bookContainer.setAttribute("data-id", book.id);
 
         const bookData = document.createElement("p");
         bookData.textContent = `Title: ${book.title}, author: ${book.author}, number of pages: ${book.pages}.`;
         bookContainer.appendChild(bookData);
+
+        const bookDelete = document.createElement("button");
+        bookDelete.textContent = 'Delete Book';
+        bookContainer.appendChild(bookDelete);
 
         libraryStand.appendChild(bookContainer);
     });
@@ -36,5 +43,15 @@ function submitClick(event) {
     displayLibrary(myLibrary);    
 }
 
+function deleteClick(event) {
+    const bookID = event.target.parentElement.dataset.id;
+
+    myLibrary.forEach(book => {
+        if (book.id === bookID) myLibrary.splice(myLibrary.indexOf(book), 1);
+    });
+    displayLibrary(myLibrary);
+}
+
 submitButton.addEventListener("click", submitClick);
+libraryStand.addEventListener("click", deleteClick);
 displayLibrary(myLibrary);
