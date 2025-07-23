@@ -7,8 +7,24 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="library">
-        
-    </div>
+    <form action="./submit" method="post" id="book-form">
+        <fieldset>
+            <legend>Add new book</legend>
+            <div class="field">
+                <label for="title">Book title: </label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="field">
+                <label for="author">Author name: </label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div class="field">
+                <label for="pages">Number of pages: </label>
+                <input type="number" min="1" id="pages" name="pages">
+            </div>
+        </fieldset>
+        <input type="submit" value="Add Book">
+    </form>
+    <div class="library"></div>    
 </body>
 </html>
