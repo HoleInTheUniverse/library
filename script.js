@@ -57,7 +57,7 @@ function submitClick(event) {
 function deleteClick(event) {
     const bookID = event.target.parentElement.dataset.id;
 
-    myLibrary.splice(myLibrary.indexOf(myLibrary.find(book => book.id === bookID)), 1);
+    myLibrary.splice(myLibrary.findIndex(book => book.id === bookID), 1);
     displayLibrary(myLibrary);
 }
 
