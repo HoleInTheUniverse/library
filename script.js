@@ -57,18 +57,14 @@ function submitClick(event) {
 function deleteClick(event) {
     const bookID = event.target.parentElement.dataset.id;
 
-    myLibrary.forEach(book => {
-        if (book.id === bookID) myLibrary.splice(myLibrary.indexOf(book), 1);
-    });
+    myLibrary.splice(myLibrary.indexOf(myLibrary.find(book => book.id === bookID)), 1);
     displayLibrary(myLibrary);
 }
 
 function readClick(event) {
     const bookID = event.target.parentElement.dataset.id;
 
-    myLibrary.forEach(book => {
-        if (book.id === bookID) myLibrary[myLibrary.indexOf(book)].bookRead();
-    });
+    myLibrary.find(book => book.id === bookID).bookRead();
     displayLibrary(myLibrary);
 }
 
